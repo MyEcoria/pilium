@@ -38,7 +38,7 @@ android {
 
 
     defaultConfig {
-        applicationId "co.banano.natriumwallet"
+        applicationId "co.raiblocksone.pilium"
         minSdkVersion 19
         targetSdkVersion 34
         multiDexEnabled true
@@ -76,7 +76,7 @@ android {
     }
 
     ndkVersion "25.1.8937393"
-    namespace 'co.banano.natriumwallet'
+    namespace 'co.raiblocksone.pilium'
     lint {
         disable 'InvalidPackage'
     }

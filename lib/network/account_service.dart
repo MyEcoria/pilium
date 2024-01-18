@@ -40,9 +40,9 @@ import 'package:natrium_wallet_flutter/network/model/response/process_response.d
 import 'package:natrium_wallet_flutter/bus/events.dart';
 
 // Server Connection String
-const String _SERVER_ADDRESS = "wss://app.natrium.io";
-const String _SERVER_ADDRESS_HTTP = "https://app.natrium.io/api";
-const String _SERVER_ADDRESS_ALERTS = "https://app.natrium.io/alerts";
+const String _SERVER_ADDRESS = "wss://pilium.raione.cc";
+const String _SERVER_ADDRESS_HTTP = "https://pilium.raione.cc/api";
+const String _SERVER_ADDRESS_ALERTS = "https://pilium.raione.cc/alerts";
 
 Map decodeJson(dynamic src) {
   return json.decode(src);

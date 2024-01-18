@@ -70,13 +70,6 @@ class _AppShareCardState extends State<AppShareCard> {
                         height: 64.6,
                         width: 64.6,
                         padding: EdgeInsets.all(2),
-                        child: QrImage(
-                          padding: EdgeInsets.all(0.0),
-                          data: StateContainer.of(context).wallet.address,
-                          version: 6,
-                          gapless: false,
-                          errorCorrectionLevel: QrErrorCorrectLevel.Q,
-                        ),
                       ),
                     ),
                     // Outer Ring

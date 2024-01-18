@@ -7,7 +7,7 @@ import 'package:natrium_wallet_flutter/util/numberutil.dart';
 /// Main wallet object that's passed around the app via state
 class AppWallet {
   static const String defaultRepresentative =
-      'nano_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd';
+      'xro_3z4u1upq8e798pj669tki5osyit6jmyzwn6cba56pnsp77hna8ze9gku93np';
 
   bool _loading; // Whether or not app is initially loading
   bool

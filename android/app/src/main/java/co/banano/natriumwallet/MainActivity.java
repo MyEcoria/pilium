@@ -1,4 +1,4 @@
-package co.banano.natriumwallet;
+package co.raiblocksone.pilium;
 
 import android.os.Bundle;
 
