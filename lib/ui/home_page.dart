@@ -279,20 +279,20 @@ class _AppHomePageState extends State<AppHomePage>
     bool contactAdded = await sl.get<SharedPrefsUtil>().getFirstContactAdded();
     if (!contactAdded) {
       bool addressExists = await sl.get<DBHelper>().contactExistsWithAddress(
-          "nano_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd");
+          "xro_1rf3e44fqw1sh5i8g7su4pc313t3j31uob8ygsof6cyc539fdg8d9mtdrejs");
       if (addressExists) {
         return;
       }
       bool nameExists =
-          await sl.get<DBHelper>().contactExistsWithName("@NatriumDonations");
+          await sl.get<DBHelper>().contactExistsWithName("@MyEcoria");
       if (nameExists) {
         return;
       }
       await sl.get<SharedPrefsUtil>().setFirstContactAdded(true);
       Contact c = Contact(
-          name: "@NatriumDonations",
+          name: "@MyEcoria",
           address:
-              "nano_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd");
+              "xro_1rf3e44fqw1sh5i8g7su4pc313t3j31uob8ygsof6cyc539fdg8d9mtdrejs");
       await sl.get<DBHelper>().saveContact(c);
     }
   }
