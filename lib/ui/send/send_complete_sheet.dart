@@ -102,7 +102,7 @@ class _SendCompleteSheetState extends State<SendCompleteSheet> {
                         text: '',
                         children: [
                           TextSpan(
-                            text: "Ӿ$amount",
+                            text: "XRO $amount",
                             style: TextStyle(
                               color: StateContainer.of(context)
                                   .curTheme

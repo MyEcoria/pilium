@@ -293,7 +293,7 @@ class AppLocalization {
 
   String get welcomeText {
     return Intl.message(
-        "Welcome to Pilium. To begin, you may create a new wallet or import an existing one.",
+        "Welcome to  Pilium. To begin, you may create a new wallet or import an existing one.",
         desc: 'intro_welcome_title',
         name: 'welcomeText');
   }
@@ -324,7 +324,7 @@ class AppLocalization {
   }
 
   String get sendAmountConfirm {
-    return Intl.message("Send %1 NANO",
+    return Intl.message("Send %1RaiBlocksOne",
         desc: 'send_pin_description', name: 'sendAmountConfirm');
   }
 
@@ -370,7 +370,7 @@ class AppLocalization {
   }
 
   String get minimumSend {
-    return Intl.message("Minimum send amount is %1 NANO",
+    return Intl.message("Minimum send amount is %1RaiBlocksOne",
         desc: 'send_minimum_error', name: 'minimumSend');
   }
 
@@ -531,7 +531,7 @@ class AppLocalization {
   }
 
   String get shareNatriumText {
-    return Intl.message("Check out Pilium! A premier NANO mobile wallet!",
+    return Intl.message("Check out Pilium! A premier RaiBlocksOne mobile wallet!",
         desc: 'share_extra', name: 'shareNatriumText');
   }
 
@@ -634,7 +634,7 @@ class AppLocalization {
   }
 
   String get notificationTitle {
-    return Intl.message("Received %1 NANO",
+    return Intl.message("Received %1RaiBlocksOne",
         desc: 'notification_title', name: 'notificationTitle');
   }
 
@@ -713,7 +713,7 @@ class AppLocalization {
   }
 
   String get transferQrScanHint {
-    return Intl.message("Scan a Nano \nseed or private key",
+    return Intl.message("Scan aRaiBlocksOne \nseed or private key",
         desc: 'transfer_qr_scan_hint', name: 'transferQrScanHint');
   }
 
@@ -723,7 +723,7 @@ class AppLocalization {
   }
 
   String get transferNoFunds {
-    return Intl.message("This seed does not have any NANO on it",
+    return Intl.message("This seed does not have anyRaiBlocksOne on it",
         desc: 'transfer_no_funds_toast', name: 'transferNoFunds');
   }
 
@@ -731,7 +731,7 @@ class AppLocalization {
 
   String get transferConfirmInfo {
     return Intl.message(
-        "A wallet with a balance of %1 NANO has been detected.\n",
+        "A wallet with a balance of %1RaiBlocksOne has been detected.\n",
         desc: 'transfer_confirm_info_first',
         name: 'transferConfirmInfo');
   }
@@ -756,7 +756,7 @@ class AppLocalization {
 
   String get transferComplete {
     return Intl.message(
-        "%1 NANO successfully transferred to your Pilium Wallet.\n",
+        "%1RaiBlocksOne successfully transferred to your Pilium Wallet.\n",
         desc: 'transfer_complete_text',
         name: 'transferComplete');
   }
@@ -771,7 +771,7 @@ class AppLocalization {
   // Scan
 
   String get scanInstructions {
-    return Intl.message("Scan a Nano \naddress QR code",
+    return Intl.message("Scan aRaiBlocksOne \naddress QR code",
         desc: 'scan_send_instruction_label', name: 'scanInstructions');
   }
 
@@ -874,7 +874,7 @@ class AppLocalization {
 
   String get exampleCardIntro {
     return Intl.message(
-        "Welcome to Pilium. Once you receive NANO, transactions will show up like this:",
+        "Welcome to  Pilium. Once you receiveRaiBlocksOne, transactions will show up like this:",
         desc: 'example_card_intro',
         name: 'exampleCardIntro');
   }
@@ -916,7 +916,7 @@ class AppLocalization {
 
   String get newAccountIntro {
     return Intl.message(
-        "This is your new account. Once you receive NANO, transactions will show up like this:",
+        "This is your new account. Once you receiveRaiBlocksOne, transactions will show up like this:",
         desc: 'Alternate account intro card',
         name: 'newAccountIntro');
   }
@@ -1119,9 +1119,9 @@ class AppLocalization {
 
   /// PARAGRAPS
   String get passwordWillBeRequiredToOpenParagraph {
-    return Intl.message("This password will be required to open Pilium.",
+    return Intl.message("This password will be required to open  Pilium.",
         desc:
-            'A paragraph that tells the users that the created password will be required to open Pilium.',
+            'A paragraph that tells the users that the created password will be required to open  Pilium.',
         name: 'passwordWillBeRequiredToOpenParagraph');
   }
 
@@ -1172,7 +1172,7 @@ class AppLocalization {
   String get requireAPasswordToOpenHeader {
     return Intl.message("Require a password to open Pilium?",
         desc:
-            'A paragraph that asks the users if they would like a password to be required to open Pilium.',
+            'A paragraph that asks the users if they would like a password to be required to open  Pilium.',
         name: 'requireAPasswordToOpenHeader');
   }
 

@@ -1,5 +1,5 @@
 name: natrium_wallet_flutter
-description: Pilium - Fast, Robust & Secure NANO Wallet.
+description: Pilium - Fast, Robust & Secure XRO Wallet.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -221,6 +221,7 @@ flutter:
     - assets/pulltosend_animation.flr
     - assets/sheethandle_animation.flr
     - assets/ntr_placeholder_animation.flr
+    - assets/logo.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

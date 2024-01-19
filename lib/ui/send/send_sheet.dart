@@ -346,7 +346,7 @@ class _SendSheetState extends State<SendSheet> {
                                                             locale: StateContainer
                                                                     .of(context)
                                                                 .currencyLocale)
-                                                    : "Ӿ" +
+                                                    : "XRO " +
                                                         StateContainer.of(
                                                                 context)
                                                             .wallet

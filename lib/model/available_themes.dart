@@ -24,7 +24,7 @@ class ThemeSetting extends SettingSelectionItem {
         return "Titanium";
       case ThemeOptions.NATRIUM:
       default:
-        return "Natrium";
+        return "Pilium";
     }
   }
 

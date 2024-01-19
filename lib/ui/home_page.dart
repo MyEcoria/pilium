@@ -1132,7 +1132,7 @@ class _AppHomePageState extends State<AppHomePage>
                                   text: '',
                                   children: [
                                     TextSpan(
-                                      text: "Ӿ" + item.getFormattedAmount(),
+                                      text: "XRO " + item.getFormattedAmount(),
                                       style:
                                           AppStyles.textStyleTransactionAmount(
                                         context,
@@ -1245,7 +1245,7 @@ class _AppHomePageState extends State<AppHomePage>
                               text: '',
                               children: [
                                 TextSpan(
-                                  text: amount + " NANO",
+                                  text: amount + " XRO",
                                   style: AppStyles.textStyleTransactionAmount(
                                     context,
                                   ),
@@ -1305,7 +1305,7 @@ class _AppHomePageState extends State<AppHomePage>
           style: AppStyles.textStyleTransactionWelcome(context),
         ),
         TextSpan(
-          text: "NANO",
+          text: "XRO ",
           style: AppStyles.textStyleTransactionWelcomePrimary(context),
         ),
         TextSpan(
@@ -1927,7 +1927,7 @@ class _AppHomePageState extends State<AppHomePage>
                                 children: [
                                   // Main balance text
                                   TextSpan(
-                                    text: "Ӿ" +
+                                    text: "XRO " +
                                         StateContainer.of(context)
                                             .wallet
                                             .getAccountBalanceDisplay(),
