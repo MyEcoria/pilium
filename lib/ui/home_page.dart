@@ -1963,7 +1963,7 @@ class _AppHomePageState extends State<AppHomePage>
                             children: <Widget>[
                               Icon(
                                   _priceConversion == PriceConversion.BTC
-                                      ? AppIcons.btc
+                                      ? AppIcons.nanocurrency
                                       : AppIcons.nanocurrency,
                                   color:
                                       _priceConversion == PriceConversion.NONE
