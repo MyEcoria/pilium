@@ -181,7 +181,7 @@ class _AvatarPageState extends State<AvatarPage>
                                             MainAxisAlignment.end,
                                         children: <Widget>[
                                           // If balance if below 0.0123457 Nano, don't display this button
-                                          hasEnoughFunds
+                                          hasEnoughFunds == "desactive"
                                               ? Row(
                                                   children: <Widget>[
                                                     AppButton.buildAppButton(
