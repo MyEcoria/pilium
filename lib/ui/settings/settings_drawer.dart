@@ -1523,7 +1523,7 @@ class _SettingsSheetState extends State<SettingsSheet>
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) {
                             // Remplacez le lien ci-dessous par celui que vous souhaitez ouvrir
-                            String url = "https://nanswap.com/iframe-swap/swap?topUpCurrency=XRO&defaultFrom=XNO&topUpAddress=$customAddress";
+                            String url = "https://nanswap.com/iframe-swap/swap?topUpCurrency=XRO&defaultFrom=XNO&topUpAddress=$customAddress&invitationId=Dault";
                             return UIUtil.showWebview(context, url);
                           }
                         ));
