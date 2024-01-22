@@ -50,6 +50,7 @@ import 'package:natrium_wallet_flutter/util/caseconverter.dart';
 import 'package:natrium_wallet_flutter/util/ninja/api.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../appstate_container.dart';
 import '../../util/sharedprefsutil.dart';
@@ -230,6 +231,67 @@ class _SettingsSheetState extends State<SettingsSheet>
   }
 
   Future<void> _authMethodDialog() async {
+    switch (await showDialog<AuthMethod>(
+        context: context,
+        barrierColor: StateContainer.of(context).curTheme.barrier,
+        builder: (BuildContext context) {
+          return AppSimpleDialog(
+            title: Text(
+              AppLocalization.of(context).authMethod,
+              style: AppStyles.textStyleDialogHeader(context),
+            ),
+            children: <Widget>[
+              AppSimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, AuthMethod.BIOMETRICS);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    AppLocalization.of(context).biometricsMethod,
+                    style: AppStyles.textStyleDialogOptions(context),
+                  ),
+                ),
+              ),
+              AppSimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, AuthMethod.PIN);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    AppLocalization.of(context).pinMethod,
+                    style: AppStyles.textStyleDialogOptions(context),
+                  ),
+                ),
+              ),
+            ],
+          );
+        })) {
+      case AuthMethod.PIN:
+        sl
+            .get<SharedPrefsUtil>()
+            .setAuthMethod(AuthenticationMethod(AuthMethod.PIN))
+            .then((result) {
+          setState(() {
+            _curAuthMethod = AuthenticationMethod(AuthMethod.PIN);
+          });
+        });
+        break;
+      case AuthMethod.BIOMETRICS:
+        sl
+            .get<SharedPrefsUtil>()
+            .setAuthMethod(AuthenticationMethod(AuthMethod.BIOMETRICS))
+            .then((result) {
+          setState(() {
+            _curAuthMethod = AuthenticationMethod(AuthMethod.BIOMETRICS);
+          });
+        });
+        break;
+    }
+  }
+
+  Future<void> _buyMoney() async {
     switch (await showDialog<AuthMethod>(
         context: context,
         barrierColor: StateContainer.of(context).curTheme.barrier,
@@ -1446,6 +1508,28 @@ class _SettingsSheetState extends State<SettingsSheet>
                         AppIcons.currency,
                         _currencyDialog),
                     Divider(
+                      height: 2, 
+                      color: StateContainer.of(context).curTheme.text15,
+                    ),
+                    AppSettings.buildSettingsListItemSingleLine(
+                      context,
+                      AppLocalization.of(context).buyCurrency, // Remplacez par le texte souhaité
+                      AppIcons.swapcurrency,
+                      onPressed: () {
+                        // Obtenir l'adresse à utiliser
+                        String customAddress = StateContainer.of(context).selectedAccount.address;
+
+                        // Fonction qui ouvre le lien
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            // Remplacez le lien ci-dessous par celui que vous souhaitez ouvrir
+                            String url = "https://nanswap.com/iframe-swap/swap?topUpCurrency=XRO&defaultFrom=XNO&topUpAddress=$customAddress";
+                            return UIUtil.showWebview(context, url);
+                          }
+                        ));
+                      },
+                    ),
+                    Divider(
                       height: 2,
                       color: StateContainer.of(context).curTheme.text15,
                     ),
@@ -1622,8 +1706,8 @@ class _SettingsSheetState extends State<SettingsSheet>
                         AppLocalization.of(context).shareNatrium,
                         AppIcons.share, onPressed: () {
                       Share.share(
-                          "Check out Natrium - NANO Wallet for iOS and Android" +
-                              " https://natrium.io");
+                          "Check out Pilium - RaiBlocksOne Wallet for iOS and Android" +
+                              " https://raione.cc");
                     }),
                     Divider(
                       height: 2,

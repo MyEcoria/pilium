@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2024-01-19T10:37:20.598335",
+  "@@last_modified": "2024-01-22T21:24:05.101177",
   "cancel": "Cancel",
   "@cancel": {
     "description": "dialog_cancel",
@@ -567,6 +567,12 @@
   "changeCurrency": "Change Currency",
   "@changeCurrency": {
     "description": "settings_local_currency",
+    "type": "text",
+    "placeholders": {}
+  },
+  "buyCurrency": "Buy RaiBlocksOne",
+  "@buyCurrency": {
+    "description": "settings_local_buy",
     "type": "text",
     "placeholders": {}
   },

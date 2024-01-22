@@ -19,7 +19,6 @@ dependencies:
 
   # Securley store data in a keystore
   flutter_secure_storage: ^8.1.0
-
   # Nano core functions
   flutter_nano_ffi:
     git:

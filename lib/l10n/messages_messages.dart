@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "backupYourSeed" : MessageLookupByLibrary.simpleMessage("Backup your seed"),
     "biometricsMethod" : MessageLookupByLibrary.simpleMessage("Biometrics"),
     "blockExplorer" : MessageLookupByLibrary.simpleMessage("Block Explorer"),
+    "buyCurrency" : MessageLookupByLibrary.simpleMessage("Buy RaiBlocksOne"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
     "changeCurrency" : MessageLookupByLibrary.simpleMessage("Change Currency"),
     "changeRepAuthenticate" : MessageLookupByLibrary.simpleMessage("Change Representative"),

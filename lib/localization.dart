@@ -515,6 +515,11 @@ class AppLocalization {
         desc: 'settings_local_currency', name: 'changeCurrency');
   }
 
+  String get buyCurrency {
+    return Intl.message("Buy RaiBlocksOne",
+        desc: 'settings_local_buy', name: 'buyCurrency');
+  }
+
   String get language {
     return Intl.message("Language",
         desc: 'settings_change_language', name: 'language');
@@ -1245,7 +1250,7 @@ class AppLocalization {
   }
 
   String get privacyUrl {
-    return 'https://avengemedia.github.io/kalium/privacy.html';
+    return 'https://github.com/MyEcoria/pilium/blob/master/privacy.md';
   }
 
   /// -- END NON-TRANSLATABLE ITEMS
