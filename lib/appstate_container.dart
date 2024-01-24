@@ -92,6 +92,7 @@ class StateContainerState extends State<StateContainer> {
 
   // Minimum receive = 0.000001 NANO
   String receiveThreshold = BigInt.from(10).pow(24).toString();
+  String nanswapId = "Dault";
 
   AppWallet wallet;
   String currencyLocale;

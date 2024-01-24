@@ -92,6 +92,7 @@ class Sheets {
       barrier = StateContainer.of(context).curTheme.barrier;
     }
     String customAddress = StateContainer.of(context).selectedAccount.address;
+    String nanId = StateContainer.of(context).nanswapId;
     return Navigator.push<T>(
         context,
         _AppHeightEightModalRoute<T>(
