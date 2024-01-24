@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:natrium_wallet_flutter/appstate_container.dart';
 import 'package:natrium_wallet_flutter/ui/util/routes.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class Sheets {
   //App Ninty Height Sheet
@@ -66,6 +67,61 @@ class Sheets {
         _AppHeightEightModalRoute<T>(
             builder: (BuildContext context) {
               return widget;
+            },
+            color: color,
+            radius: radius,
+            barrierLabel:
+                MaterialLocalizations.of(context).modalBarrierDismissLabel,
+            barrier: barrier,
+            animationDurationMs: animationDurationMs));
+  }
+
+  //App Height Eigth Sheet
+  static Future<T> showAppSwapSheet<T>(
+    
+      {@required BuildContext context,
+      @required Widget widget,
+      Color color,
+      double radius = 30.0,
+      Color barrier,
+      int animationDurationMs = 400}) {
+    if (color == null) {
+      color = StateContainer.of(context).curTheme.backgroundDark;
+    }
+    if (barrier == null) {
+      barrier = StateContainer.of(context).curTheme.barrier;
+    }
+    String customAddress = StateContainer.of(context).selectedAccount.address;
+    return Navigator.push<T>(
+        context,
+        _AppHeightEightModalRoute<T>(
+            builder: (BuildContext context) {
+              return SafeArea(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      height: 5,
+                      width: MediaQuery.of(context).size.width * 0.15,
+                      decoration: BoxDecoration(
+                        color: StateContainer.of(context).curTheme.text10,
+                        borderRadius: BorderRadius.circular(100.0),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    Expanded(
+                      child: FractionallySizedBox(
+                        widthFactor: 0.95, // 90% de la largeur de l'écran
+                        child: WebView(
+                          initialUrl: 'https://nanswap.com/iframe-swap/swap?topUpCurrency=XRO&defaultFrom=XNO&topUpAddress=$customAddress&invitationId=Dault',
+                          javascriptMode: JavascriptMode.unrestricted,
+                          backgroundColor: color,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
             },
             color: color,
             radius: radius,

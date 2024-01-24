@@ -520,6 +520,11 @@ class AppLocalization {
         desc: 'settings_local_buy', name: 'buyCurrency');
   }
 
+  String get faucetCurrency {
+    return Intl.message("Faucet",
+        desc: 'settings_local_faucet', name: 'faucetCurrency');
+  }
+
   String get language {
     return Intl.message("Language",
         desc: 'settings_change_language', name: 'language');
@@ -1250,7 +1255,7 @@ class AppLocalization {
   }
 
   String get privacyUrl {
-    return 'https://github.com/MyEcoria/pilium/blob/master/privacy.md';
+    return 'https://simplistic-gooseberry-88e.notion.site/Pilium-7591e673348e47fa9274f8d669fbd404';
   }
 
   /// -- END NON-TRANSLATABLE ITEMS

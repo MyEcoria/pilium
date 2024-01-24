@@ -20,15 +20,15 @@ import 'package:natrium_wallet_flutter/appstate_container.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
-class ReceiveSheet extends StatefulWidget {
+class SwapSheet extends StatefulWidget {
   final Widget qrWidget;
 
-  ReceiveSheet({this.qrWidget}) : super();
+  SwapSheet({this.qrWidget}) : super();
 
-  _ReceiveSheetStateState createState() => _ReceiveSheetStateState();
+  _SwapSheetStateState createState() => _SwapSheetStateState();
 }
 
-class _ReceiveSheetStateState extends State<ReceiveSheet> {
+class _SwapSheetStateState extends State<SwapSheet> {
   GlobalKey shareCardKey;
   ByteData shareImageData;
 
@@ -391,5 +391,3 @@ class _ReceiveSheetStateState extends State<ReceiveSheet> {
         ));
   }
 }
-
-

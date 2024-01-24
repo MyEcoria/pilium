@@ -30,6 +30,7 @@ import 'package:natrium_wallet_flutter/ui/contacts/add_contact.dart';
 import 'package:natrium_wallet_flutter/ui/send/send_sheet.dart';
 import 'package:natrium_wallet_flutter/ui/send/send_confirm_sheet.dart';
 import 'package:natrium_wallet_flutter/ui/receive/receive_sheet.dart';
+import 'package:natrium_wallet_flutter/ui/swap/swap_sheet.dart';
 import 'package:natrium_wallet_flutter/ui/settings/settings_drawer.dart';
 import 'package:natrium_wallet_flutter/ui/widgets/buttons.dart';
 import 'package:natrium_wallet_flutter/ui/widgets/dialog.dart';
@@ -77,6 +78,7 @@ class _AppHomePageState extends State<AppHomePage>
 
   // Receive card instance
   ReceiveSheet receive;
+  SwapSheet swap;
 
   // A separate unfortunate instance of this list, is a little unfortunate
   // but seems the only way to handle the animations
@@ -850,24 +852,52 @@ class _AppHomePageState extends State<AppHomePage>
                       //Main Card End
                       //Transactions Text
                       Container(
-                        margin: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 20.0, 26.0, 0.0),
+                        margin: EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 26.0, 0.0),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
                               CaseChange.toUpperCase(
-                                  AppLocalization.of(context).transactions,
-                                  context),
+                                AppLocalization.of(context).transactions,
+                                context,
+                              ),
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.w100,
                                 color: StateContainer.of(context).curTheme.text,
                               ),
+                            ), 
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                boxShadow: [StateContainer.of(context).curTheme.boxShadowButton],
+                              ),
+                              height: 35, // Réduire la hauteur du bouton
+                              width: 80, // Réduire la largeur du bouton
+                              child: FlatButton(
+                                color: StateContainer.of(context).curTheme.primary,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(100.0),
+                                ),
+                                child: AutoSizeText(
+                                  "Swap",
+                                  textAlign: TextAlign.center,
+                                  style: AppStyles.textStyleButtonPrimary(context),
+                                  maxLines: 1,
+                                  stepGranularity: 0.5,
+                                ),
+                                onPressed: () {
+                                  Sheets.showAppSwapSheet(
+                                      context: context);
+                                },
+                                highlightColor: Colors.transparent,
+                                splashColor: Colors.transparent,
+                              ),
                             ),
                           ],
                         ),
-                      ), //Transactions Text End
+                      ),
                       //Transactions List
                       Expanded(
                         child: Stack(
@@ -2000,6 +2030,134 @@ class TransactionDetailsSheet extends StatefulWidget {
 }
 
 class _TransactionDetailsSheetState extends State<TransactionDetailsSheet> {
+  // Current state references
+  bool _addressCopied = false;
+  // Timer reference so we can cancel repeated events
+  Timer _addressCopiedTimer;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      minimum: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height * 0.035,
+      ),
+      child: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                // A stack for Copy Address and Add Contact buttons
+                Stack(
+                  children: <Widget>[
+                    // A row for Copy Address Button
+                    Row(
+                      children: <Widget>[
+                        AppButton.buildAppButton(
+                            context,
+                            // Share Address Button
+                            _addressCopied
+                                ? AppButtonType.SUCCESS
+                                : AppButtonType.PRIMARY,
+                            _addressCopied
+                                ? AppLocalization.of(context).addressCopied
+                                : AppLocalization.of(context).copyAddress,
+                            Dimens.BUTTON_TOP_EXCEPTION_DIMENS, onPressed: () {
+                          Clipboard.setData(
+                              new ClipboardData(text: widget.address));
+                          if (mounted) {
+                            setState(() {
+                              // Set copied style
+                              _addressCopied = true;
+                            });
+                          }
+                          if (_addressCopiedTimer != null) {
+                            _addressCopiedTimer.cancel();
+                          }
+                          _addressCopiedTimer =
+                              new Timer(const Duration(milliseconds: 800), () {
+                            if (mounted) {
+                              setState(() {
+                                _addressCopied = false;
+                              });
+                            }
+                          });
+                        }),
+                      ],
+                    ),
+                    // A row for Add Contact Button
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsetsDirectional.only(
+                              top: Dimens.BUTTON_TOP_EXCEPTION_DIMENS[1],
+                              end: Dimens.BUTTON_TOP_EXCEPTION_DIMENS[2]),
+                          child: Container(
+                            height: 55,
+                            width: 55,
+                            // Add Contact Button
+                            child: !widget.displayName.startsWith("@")
+                                ? FlatButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Sheets.showAppHeightNineSheet(
+                                          context: context,
+                                          widget: AddContactSheet(
+                                              address: widget.address));
+                                    },
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(100.0)),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 10.0, horizontal: 10),
+                                    child: Icon(AppIcons.addcontact,
+                                        size: 35,
+                                        color: _addressCopied
+                                            ? StateContainer.of(context)
+                                                .curTheme
+                                                .successDark
+                                            : StateContainer.of(context)
+                                                .curTheme
+                                                .backgroundDark),
+                                  )
+                                : SizedBox(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                // A row for View Details button
+                Row(
+                  children: <Widget>[
+                    AppButton.buildAppButton(
+                        context,
+                        AppButtonType.PRIMARY_OUTLINE,
+                        AppLocalization.of(context).viewDetails,
+                        Dimens.BUTTON_BOTTOM_DIMENS, onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return UIUtil.showBlockExplorerWebview(
+                            context, widget.hash);
+                      }));
+                    }),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SwapSheetState extends State<TransactionDetailsSheet> {
   // Current state references
   bool _addressCopied = false;
   // Timer reference so we can cancel repeated events

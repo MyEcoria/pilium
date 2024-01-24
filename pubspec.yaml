@@ -6,7 +6,7 @@ description: Pilium - Fast, Robust & Secure XRO Wallet.
 # followed by an optional build number separated by a +.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
-version: 2.5.2+85
+version: 2.5.2+86
 
 environment:
   sdk: ">=2.11.99 <3.0.0"
@@ -50,7 +50,8 @@ dependencies:
 
   # Logger
   logger: ^2.0.1
-
+  
+  webview_flutter: ^3.0.0
   # Native webview plugin
   flutter_webview_plugin: ^0.4.0
 

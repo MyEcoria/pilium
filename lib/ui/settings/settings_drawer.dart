@@ -1513,20 +1513,16 @@ class _SettingsSheetState extends State<SettingsSheet>
                     ),
                     AppSettings.buildSettingsListItemSingleLine(
                       context,
-                      AppLocalization.of(context).buyCurrency, // Remplacez par le texte souhaité
+                      AppLocalization.of(context).faucetCurrency, // Remplacez par le texte souhaité
                       AppIcons.swapcurrency,
-                      onPressed: () {
-                        // Obtenir l'adresse à utiliser
-                        String customAddress = StateContainer.of(context).selectedAccount.address;
-
-                        // Fonction qui ouvre le lien
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            // Remplacez le lien ci-dessous par celui que vous souhaitez ouvrir
-                            String url = "https://nanswap.com/iframe-swap/swap?topUpCurrency=XRO&defaultFrom=XNO&topUpAddress=$customAddress&invitationId=Dault";
-                            return UIUtil.showWebview(context, url);
-                          }
-                        ));
+                      onPressed: () async {
+                        // Fonction qui ouvre le lien dans le navigateur par défaut
+                        final url = "https://nanswap.com/fr/raiblocks1-faucet?r=Dault";
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Impossible d\'ouvrir le lien : $url';
+                        }
                       },
                     ),
                     Divider(
